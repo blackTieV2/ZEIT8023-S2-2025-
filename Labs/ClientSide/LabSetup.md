@@ -34,23 +34,23 @@
 - Apps: WhatsApp, Signal, Telegram, LinkedIn, Reddit, VK, PortDroid, MyFirst Circle
 
 ---
-
-
-```mermaid
 flowchart TD
+    ISP[Internet / ISP]
+    FW[Firewalla Gold Pro<br/>(192.168.99.254/24)]
+    SW[Cisco Catalyst C3850 (L3)<br/>SVI VLAN99 = 192.168.99.1<br/>SVI VLAN80 = 192.168.80.1]
+    AP[Access Point<br/>Gi3/0/27]
+    KALI[Kali Monitor<br/>Gi3/0/28 (SPAN)]
+    ASUS[ASUS RT-AC3100<br/>(AP Mode → VLAN80 Bridge)]
+    WIFI[Wi-Fi Clients (VLAN80)]
+    OP11[OnePlus 11 (CPH2451)<br/>Android 15<br/>IP: 192.168.80.8<br/>Apps: WA, Signal, Telegram, LinkedIn, Reddit, PortDroid, MyFirst Circle, VK]
 
-    ISP[Internet / ISP] 
-    ISP -->|WAN (100.122.x.x)| FW[Firewalla Gold Pro<br/>(192.168.99.254/24)]
-
-    FW -->|VLAN99 Trunk| SW[Cisco Catalyst C3850 (L3)<br/>SVI VLAN99 = 192.168.99.1<br/>SVI VLAN80 = 192.168.80.1]
-
-    SW -->|Gi3/0/27 (AP)| AP[Access Point]
-    SW -->|Gi3/0/28 (SPAN → Kali)| KALI[Kali Monitor]
-
-    SW -->|VLAN80| ASUS[ASUS RT-AC3100<br/>(AP Mode → VLAN80 Bridge)]
-    ASUS --> WIFI[Wi-Fi Clients (VLAN80)]
-
-    WIFI --> OP11[OnePlus 11 (CPH2451)<br/>Android 15<br/>IP: 192.168.80.8<br/>Apps: WA, Signal, Telegram,<br/>LinkedIn, Reddit, PortDroid,<br/>MyFirst Circle, VK]
+    ISP --> FW
+    FW --> SW
+    SW --> AP
+    SW --> KALI
+    SW --> ASUS
+    ASUS --> WIFI
+    WIFI --> OP11
 ```
 
 
