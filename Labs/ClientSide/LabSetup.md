@@ -35,6 +35,7 @@
 
 ---
 
+
 ```mermaid
 flowchart TD
 
@@ -50,8 +51,8 @@ flowchart TD
     F --> G[Wi-Fi Clients (VLAN80)]
 
     G --> H[OnePlus 11 (CPH2451)<br/>Android 15<br/>IP: 192.168.80.8<br/>Apps: WA, Signal, Telegram,<br/>LinkedIn, Reddit, PortDroid,<br/>MyFirst Circle, VK]
-
 ```
+
 
 ---
                 
