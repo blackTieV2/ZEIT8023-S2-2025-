@@ -73,6 +73,27 @@
 
 ```
 
+---
+
+```mermaid
+flowchart TD
+    ISP["Internet / ISP"]
+    FW["Firewalla Gold Pro\n(192.168.99.254/24)"]
+    SW["Cisco Catalyst C3850 (L3)\nSVI VLAN99 = 192.168.99.1\nSVI VLAN80 = 192.168.80.1"]
+    AP["Access Point\nGi3/0/27"]
+    KALI["Kali Monitor\nGi3/0/28 (SPAN)"]
+    ASUS["ASUS RT-AC3100\n(AP Mode -> VLAN80 Bridge)"]
+    WIFI["Wi-Fi Clients (VLAN80)"]
+    OP11["OnePlus 11 (CPH2451)\nAndroid 15\nIP: 192.168.80.8\nApps: WA, Signal, Telegram, LinkedIn, Reddit, PortDroid, MyFirst Circle, VK"]
+
+    ISP --> FW
+    FW --> SW
+    SW --> AP
+    SW --> KALI
+    SW --> ASUS
+    ASUS --> WIFI
+    WIFI --> OP11
+```
 
 ---
                 
