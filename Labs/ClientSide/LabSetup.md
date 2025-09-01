@@ -35,16 +35,22 @@
 
 ---
 
-```
-%%{init: {'theme':'base'}}%%
-graph TD
-    Internet[Internet / ISP] -->|WAN 100.122.x.x| Firewalla[Firewalla Gold Pro<br>192.168.99.254/24]
-    Firewalla -->|VLAN99 Trunk| C3850[Cisco Catalyst C3850 (L3)<br>SVI VLAN99 192.168.99.1<br>SVI VLAN80 192.168.80.1]
-    C3850 -->|VLAN80| ASUS[ASUS RT-AC3100<br>AP Mode → VLAN80 Bridge]
-    C3850 -->|Gi3/0/27| AP
-    C3850 -->|Gi3/0/28| SPAN[Kali SPAN]
-    ASUS -->|Wi-Fi| Clients
-    Clients --> OnePlus[OnePlus 11 (CPH2451)<br>Android 15<br>192.168.80.8<br>Apps: WA, Signal, Telegram, LinkedIn, Reddit, PortDroid, MyFirst Circle, VK]
+```mermaid
+flowchart TD
+
+    A[Internet / ISP] 
+    A -->|WAN (100.122.x.x)| B[Firewalla Gold Pro<br/>(192.168.99.254/24)]
+
+    B -->|VLAN99 Trunk| C[Cisco Catalyst C3850 (L3)<br/>SVI VLAN99 = 192.168.99.1<br/>SVI VLAN80 = 192.168.80.1]
+
+    C ---|Gi3/0/27 (AP)| D[ ]
+    C ---|Gi3/0/28 (SPAN → Kali)| E[ ]
+
+    C -->|VLAN80| F[ASUS RT-AC3100<br/>(AP Mode → VLAN80 Bridge)]
+    F --> G[Wi-Fi Clients (VLAN80)]
+
+    G --> H[OnePlus 11 (CPH2451)<br/>Android 15<br/>IP: 192.168.80.8<br/>Apps: WA, Signal, Telegram,<br/>LinkedIn, Reddit, PortDroid,<br/>MyFirst Circle, VK]
+
 ```
 
 ---
