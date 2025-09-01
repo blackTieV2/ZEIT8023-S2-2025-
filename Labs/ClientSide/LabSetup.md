@@ -34,6 +34,7 @@
 - Apps: WhatsApp, Signal, Telegram, LinkedIn, Reddit, VK, PortDroid, MyFirst Circle
 
 ---
+```mermaid
 flowchart TD
     ISP[Internet / ISP]
     FW[Firewalla Gold Pro<br/>(192.168.99.254/24)]
