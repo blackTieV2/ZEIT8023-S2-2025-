@@ -35,6 +35,7 @@
 
 ---
 
+```
 %%{init: {'theme':'base'}}%%
 graph TD
     Internet[Internet / ISP] -->|WAN 100.122.x.x| Firewalla[Firewalla Gold Pro<br>192.168.99.254/24]
@@ -44,8 +45,9 @@ graph TD
     C3850 -->|Gi3/0/28| SPAN[Kali SPAN]
     ASUS -->|Wi-Fi| Clients
     Clients --> OnePlus[OnePlus 11 (CPH2451)<br>Android 15<br>192.168.80.8<br>Apps: WA, Signal, Telegram, LinkedIn, Reddit, PortDroid, MyFirst Circle, VK]
+```
 
-                ---
+---
                 
 
 ### VLAN Configuration  
