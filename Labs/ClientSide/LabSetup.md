@@ -38,7 +38,40 @@ WIFI --> OP11
 ```
 
 ---
-                
+
+```mermaid
+architecture-beta
+    group "External Network"
+        internet(internet)[Internet / ISP]
+    end
+
+    group "Local Area Network"
+        firewall(firewall)[Firewalla Gold Pro<br>(192.168.99.254/24)]
+        switch(server)[Cisco Catalyst C3850 (L3)<br>SVI VLAN99 = 192.168.99.1<br>SVI VLAN80 = 192.168.80.1]
+    end
+
+    group "Wireless Network"
+        ap(logos:mdi-wifi)[Access Point<br>Gi3/0/27]
+        asus(logos:asus)[ASUS RT-AC3100<br>(AP Mode -> VLAN80 Bridge)]
+        wifi(logos:mdi-wifi-strength-4)[Wi-Fi Clients (VLAN80)]
+        op11(logos:mdi-cellphone-android)[OnePlus 11 (CPH2451)<br>Android 15<br>IP: 192.168.80.8]
+    end
+
+    group "Monitoring Station"
+        kali(logos:kali-linux)[Kali Monitor<br>Gi3/0/28 (SPAN)]
+    end
+    
+    internet --> firewall
+    firewall --> switch
+    switch --> ap
+    switch --> kali
+    switch --> asus
+    asus --> wifi
+    wifi --> op11
+```
+
+---
+
 
 ### VLAN Configuration  
 - **VLAN 99** (192.168.99.0/24):  
