@@ -34,6 +34,7 @@
 - Apps: WhatsApp, Signal, Telegram, LinkedIn, Reddit, VK, PortDroid, MyFirst Circle
 
 ---
+```text
 ┌─────────────────────┐
 │     Internet/ISP    │
 └──────────┬──────────┘
@@ -70,6 +71,7 @@
 │       PortDroid, MyFirst Circle, VK                      │
 └─────────────────────────────────────────────────────────┘
 
+```
 
 
 ---
