@@ -35,44 +35,15 @@
 
 ---
 
-┌─────────────────────┐
-                           │    Internet / ISP   │
-                           └─────────┬───────────┘
-                                     │
-                       WAN           │
-                   (100.122.x.x)     │
-                                     │
-                        ┌────────────▼───────────┐
-                        │   Firewalla Gold Pro   │
-                        │  (192.168.99.254/24)   │
-                        └────────────┬───────────┘
-                                     │
-                        VLAN99 Trunk │
-                                     │
-                 ┌───────────────────▼───────────────────┐
-                 │        Cisco Catalyst C3850 (L3)      │
-                 │ SVI VLAN99 = 192.168.99.1             │
-                 │ SVI VLAN80 = 192.168.80.1             │
-                 │                                       │
-   Gi3/0/27(AP) ─┤                                       ├─ Gi3/0/28 (SPAN → Kali)
-                 │                                       │
-                 └───────────────────┬───────────────────┘
-                                     │
-                              VLAN80 │
-                                     │
-                      ┌──────────────▼───────────────┐
-                      │        ASUS RT‑AC3100        │
-                      │   (AP Mode → VLAN80 Bridge)  │
-                      └──────────────┬───────────────┘
-                                     │
-                          Wi‑Fi Clients (VLAN80)
-                                     │
-                ┌────────────────────┴─────────────────────┐
-                │     OnePlus 11 (CPH2451) Android 15      │
-                │  IP: 192.168.80.8 | Apps: WA, Signal,    │
-                │  Telegram, LinkedIn, Reddit, PortDroid,  │
-                │  MyFirst Circle, VK                      │
-                └──────────────────────────────────────────┘
+%%{init: {'theme':'base'}}%%
+graph TD
+    Internet[Internet / ISP] -->|WAN 100.122.x.x| Firewalla[Firewalla Gold Pro<br>192.168.99.254/24]
+    Firewalla -->|VLAN99 Trunk| C3850[Cisco Catalyst C3850 (L3)<br>SVI VLAN99 192.168.99.1<br>SVI VLAN80 192.168.80.1]
+    C3850 -->|VLAN80| ASUS[ASUS RT-AC3100<br>AP Mode → VLAN80 Bridge]
+    C3850 -->|Gi3/0/27| AP
+    C3850 -->|Gi3/0/28| SPAN[Kali SPAN]
+    ASUS -->|Wi-Fi| Clients
+    Clients --> OnePlus[OnePlus 11 (CPH2451)<br>Android 15<br>192.168.80.8<br>Apps: WA, Signal, Telegram, LinkedIn, Reddit, PortDroid, MyFirst Circle, VK]
 
                 ---
                 
