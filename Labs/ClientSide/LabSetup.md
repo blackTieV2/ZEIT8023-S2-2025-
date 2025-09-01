@@ -7,6 +7,33 @@
 - **Asus Access Point (AP)** connected to Cisco **Gi3/0/27**, bridging wireless clients into **VLAN80** (192.168.80.0/24).  
 - **hpKali Laptop (Forensics Station)** connected to Cisco **Gi3/0/28**, designated as **SPAN/mirror destination** from the AP port.  
 
+
+🌐 **Internet/ISP**
+   │
+   ▼
+🛡 **Firewalla Gold Pro** (`192.168.99.254/24`)
+   │ VLAN99 trunk
+   ▼
+🔀 **Cisco Catalyst 3850 (L3 Switch)**
+   - VLAN99 SVI: `192.168.99.1`
+   - VLAN80 SVI: `192.168.80.1`
+   - SPAN: Gi3/0/27 → Gi3/0/28
+   │
+   ├── 📡 **ASUS RT‑AC3100 (Access Point/Bridge)** → VLAN80  
+   │       - WiFi clients, Android DUT bridged  
+   │
+   └── 💻 **Kali Linux Forensics Station (hpKali)**  
+           - NIC: `eth0` (SPAN dest)  
+           - Tools: tcpdump / tshark  
+           - Storage: `/root/ZEIT8023/`  
+ 
+📱 **DUT: OnePlus 11 (Model CPH2451, Android 15)**  
+- IP: `192.168.80.8`  
+- Security Patch: *June 1, 2025 (Kernel 5.15.149)*  
+- Apps: WhatsApp, Signal, Telegram, LinkedIn, Reddit, VK, PortDroid, MyFirst Circle
+
+
+
 ### VLAN Configuration  
 - **VLAN 99** (192.168.99.0/24):  
   - Cisco SVI: `192.168.99.1`  
@@ -76,6 +103,3 @@ sha256sum redteam_ap_capture_2025-09-01_23-59.pcap dns_only_2025-09-02_00-00.pca
 
 ---
 
-👉 This section goes **right at the top of the final report** before the Executive Summary.  
-
-Would you like me to also produce a **network diagram (ASCII or styled)** so the report readers have a clear visual of the setup?
