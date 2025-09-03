@@ -11,13 +11,13 @@
 
 ```mermaid
 flowchart TD
-ISP["ISP"]
-FW["Firewalla Gold Pro
+ISP["Internet / ISP"]
+FW["Firewalla Gold Pro (Router)
 (192.168.99.254/24)"]
 SW["Cisco Catalyst C3850 (L3)
 SVI VLAN99 = 192.168.99.1
 SVI VLAN80 = 192.168.80.1"]
-KALI["Kali Laptop
+KALI["Kali Laptop Monitor
 Gi3/0/28 (SPAN)"]
 AP["Access Point (Gi3/0/27)"]
 ASUS["ASUS RT-AC3100
@@ -28,11 +28,11 @@ IP: 192.168.80.8
 Apps: WA, Signal, Telegram, LinkedIn, Reddit, PortDroid, MyFirst Circle, VK"]
 
 ISP <--> FW
-FW <--> SW
-SW --> KALI
-SW <--> AP
-AP <--> ASUS
-ASUS <--> OP11
+FW <--> | VLAN99 | SW
+SW --> | SPAN | KALI
+SW <--> | VLAN80 | AP
+AP <--> | VLAN80 | ASUS
+ASUS <--> | VLAN80 | OP11
 ```
 
 ---
@@ -154,28 +154,4 @@ sha256sum redteam_ap_capture_2025-09-01_23-59.pcap dns_only_2025-09-02_00-00.pca
 
 ```
 
-```mermaid
-flowchart TD
-ISP["Internet / ISP"]
-FW["Firewalla Gold Pro
-(192.168.99.254/24)"]
-SW["Cisco Catalyst C3850 (L3)
-SVI VLAN99 = 192.168.99.1
-SVI VLAN80 = 192.168.80.1"]
-KALI["Kali Monitor
-Gi3/0/28 (SPAN)"]
-AP["Access Point (Gi3/0/27)"]
-ASUS["ASUS RT-AC3100
-(AP Mode -> VLAN80 Bridge)"]
-OP11["OnePlus 11 (CPH2451)
-Android 15
-IP: 192.168.80.8
-Apps: WA, Signal, Telegram, LinkedIn, Reddit, PortDroid, MyFirst Circle, VK"]
 
-ISP <--> FW
-FW <--> | VLAN99 | SW
-SW --> | SPAN | KALI
-SW <--> | VLAN80 | AP
-AP <--> | VLAN80 | ASUS
-ASUS <--> | VLAN80 | OP11
-```
