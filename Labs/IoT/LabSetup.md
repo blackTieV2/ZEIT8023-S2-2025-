@@ -3,26 +3,28 @@
 
 ```mermaid
 flowchart TD
-    Internet((Internet / ISP<br/>Tuya Cloud | AWS | Cloudflare | Google))
-    Router["Firewalla Gold Pro (Router)<br/>192.168.99.254/24<br/>NAT to Internet"]
-    Switch["Cisco Catalyst C3850<br/>SVI VLAN99 192.168.99.1<br/>SVI VLAN80 192.168.80.1 (Gateway)"]
-    AP["ASUS RT-AC3100<br/>AP Mode → VLAN80 Bridge"]
-    Laptop["Kali Laptop (192.168.80.11)<br/>Docker: Home Assistant + SPAN Capture"]
-    Camera["Tuya Wi‑Fi Camera<br/>(192.168.80.12)<br/>Shenzhen Bilian Electronic Co."]
+    Internet((Internet / ISP))
+    Cloud[(Tuya Cloud\nAWS\nCloudflare\nGoogle)]
+    Router["Firewalla Gold Pro (Router)\n192.168.99.254/24\nNAT to Internet"]
+    Switch["Cisco Catalyst C3850\nSVI VLAN99: 192.168.99.1\nSVI VLAN80: 192.168.80.1 (Gateway)"]
+    AP["ASUS RT-AC3100\nAP Mode → VLAN80 Bridge"]
+    Laptop["Kali Laptop (192.168.80.11)\nDocker: Home Assistant + SPAN Capture"]
+    Camera["Tuya Wi‑Fi Camera (192.168.80.12)\nShenzhen Bilian Electronic Co."]
 
-    %% Physical Path
+    %% Physical path
     Internet <--> Router
     Router <--> Switch
     Switch <--> AP
     Switch <--> Laptop
     AP <--> Camera
 
-    %% Camera traffic outbound
+    %% Camera outbound flows
     Camera -->|"TLS / QUIC sessions"| Switch
     Switch --> Router
     Router -->|"NAT outbound"| Internet
+    Internet -.-> Cloud
 
     %% Mgmt path
-    Laptop -.->|"Mgmt view via HA<br/>SPAN Monitoring"| Camera
+    Laptop -.->|"Mgmt view via HA\nSPAN Monitoring"| Camera
 ```
 
