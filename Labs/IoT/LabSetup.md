@@ -2,15 +2,14 @@
 
 
 ```mermaid
-%%{init: { "flowchart": { "htmlLabels": false } }}%%
 flowchart TD
     Internet((Internet / ISP))
-    Cloud["Tuya Cloud\nAWS / Cloudflare / Google"]
-    Router["Firewalla Gold Pro (Router)\n192.168.99.254\nNAT outbound"]
-    Switch["Cisco Catalyst C3850\nSVI VLAN99: 192.168.99.1\nSVI VLAN80: 192.168.80.1 (Gateway)"]
-    AP["ASUS RT-AC3100\nAP Mode → VLAN80 Bridge"]
-    Laptop["Kali Laptop (192.168.80.11)\nDocker: Home Assistant + SPAN Capture"]
-    Camera["Tuya Wi-Fi Camera\n192.168.80.12\nShenzhen Bilian Electronic Co."]
+    Cloud["Tuya Cloud <br/> AWS / Cloudflare / Google"]
+    Router["Firewalla Gold Pro (Router)<br/>192.168.99.254<br/>NAT outbound"]
+    Switch["Cisco Catalyst C3850<br/>SVI VLAN99: 192.168.99.1<br/>SVI VLAN80: 192.168.80.1 (Gateway)"]
+    AP["ASUS RT-AC3100<br/>AP Mode → VLAN80 Bridge"]
+    Laptop["Kali Laptop (192.168.80.11)<br/>Docker: Home Assistant + SPAN Capture"]
+    Camera["Tuya Wi-Fi Camera<br/>192.168.80.12<br/>Shenzhen Bilian Electronic Co."]
 
     %% Infra path
     Internet <--> Router
@@ -26,7 +25,17 @@ flowchart TD
     Internet --> Cloud
 
     %% Mgmt / SPAN path
-    Laptop -.->|"Mgmt via HA\nSPAN monitoring"| Camera
+    Laptop -.->|"Mgmt via HA <br/> SPAN monitoring"| Camera
+
+    %% Prevent text cutoff
+    classDef wide fill=black,stroke=white,width:300px;
+    Cloud:::wide
+    Router:::wide
+    Switch:::wide
+    AP:::wide
+    Laptop:::wide
+    Camera:::wide
+
 
 ```
 
