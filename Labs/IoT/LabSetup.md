@@ -10,7 +10,7 @@ flowchart TD
     Switch["Cisco Catalyst C3850 (L3) <br/> SVI VLAN99: 192.168.99.1 <br/> SVI VLAN80: 192.168.80.1 (Gateway)"]
     AP["ASUS RT-AC3100 <br/> AP Mode → VLAN80 Bridge"]
     Laptop["Kali Laptop (192.168.80.11) <br/> Docker: Home Assistant + SPAN Capture"]
-    Camera["Tuya Wi-Fi Camera (192.168.80.12) <br/> Shenzhen Bilian Electronic Co."]
+    Camera["Tuya Wi-Fi Camera (192.168.80.12) <br/> Shenzhen Bilian Electronic Co. <br/> MAC 10:A4:BE:71:A1:E1"]
 
     %% Inline link-label nodes (small boxes)
     v99["VLAN99"]:::tag
