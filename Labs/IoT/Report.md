@@ -1,11 +1,8 @@
-Awesome—I rebuilt the report with the **same headings** as your template, and I rewrote **Section 4** into a full narrative analysis of the supplied evidence. I moved the old “Structured Evidence Table” into **Appendix B**. Where I cite your artifacts, you’ll see inline file markers.
-
 ---
 
 # 🔐 Forensic Wireless Traffic Analysis Report
 
-**Case ID:** ZEIT8023-S2-2025-IoT-Cam
-**Analyst:** *\[Your Name]*
+**ID:** ZEIT8023-S2-2025-IoT-Cam
 **Date:** 11 Sept 2025 (SGT)
 
 ---
