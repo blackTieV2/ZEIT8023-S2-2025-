@@ -5,7 +5,7 @@
 flowchart TD
     Internet((Internet / ISP))
     Cloud[Tuya Cloud <br/> AWS / Cloudflare / Google]
-    Router["Firewalla Gold Pro (Router)<br/> 192.168.99.254\nNAT outbound"]
+    Router["Firewalla Gold Pro (Router)<br/> 192.168.99.254 <br/> NAT outbound"]
     Switch["Cisco Catalyst C3850 <br/> SVI VLAN99: 192.168.99.1 <br/> SVI VLAN80: 192.168.80.1 (Gateway)"]
     AP["ASUS RT-AC3100 <br/> AP Mode → VLAN80 Bridge"]
     Laptop["Kali Laptop (192.168.80.11) <br/> Docker: Home Assistant + SPAN Capture"]
