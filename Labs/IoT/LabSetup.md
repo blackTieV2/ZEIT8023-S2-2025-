@@ -35,7 +35,5 @@ flowchart TD
     AP:::wide
     Laptop:::wide
     Camera:::wide
-
-
 ```
 
