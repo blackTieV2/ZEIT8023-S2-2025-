@@ -26,7 +26,7 @@ flowchart TD
     Internet --> Cloud
 
     %% Mgmt / SPAN path
-    Laptop -.->|"Mgmt via HA\nSPAN monitoring"| Camera
+    Laptop -.->|"Mgmt via HA <br/> SPAN monitoring"| Camera
 
 ```
 
