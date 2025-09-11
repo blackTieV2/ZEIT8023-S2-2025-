@@ -5,28 +5,37 @@
 %%{init: {"flowchart": {"htmlLabels": false}}}%%
 flowchart TD
     Internet((Internet / ISP))
-    Cloud["Tuya Cloud <br/> AWS / Cloudflare / Google"]
-    Router["Firewalla Gold Pro (Router) <br/> 192.168.99.254 <br/> NAT outbound"]
-    Switch["Cisco Catalyst C3850 <br/> SVI VLAN99: 192.168.99.1 <br/> SVI VLAN80: 192.168.80.1 (Gateway)"]
-    AP["ASUS RT-AC3100 <br/> AP Mode → VLAN80 Bridge"]
-    Laptop["Kali Laptop (192.168.80.11) <br/> Docker: Home Assistant + SPAN Capture"]
-    Camera["Tuya Wi-Fi Camera <br/> 192.168.80.12 <br/> Shenzhen Bilian Electronic Co."]
+    Cloud["Tuya Cloud\nAWS / Cloudflare / Google"]
+    Router["Firewalla Gold Pro (Router)\n192.168.99.254\nNAT outbound"]
+    Switch["Cisco Catalyst C3850\nSVI VLAN99: 192.168.99.1\nSVI VLAN80: 192.168.80.1 (Gateway)"]
+    AP["ASUS RT-AC3100\nAP Mode → VLAN80 Bridge"]
+    Laptop["Kali Laptop (192.168.80.11)\nDocker: Home Assistant + SPAN Capture"]
+    Camera["Tuya Wi-Fi Camera\n192.168.80.12\nShenzhen Bilian Electronic Co."]
 
-    %% Infra path
+    %% tag nodes for link labels
+    v99["VLAN99"]:::tag
+    v80a["VLAN80"]:::tag
+    v80b["VLAN80"]:::tag
+    v80c["VLAN80"]:::tag
+    span1["SPAN"]:::tag
+
+    %% Core paths
     Internet <--> Router
-    Router <--> Switch
-    Switch <--> AP
-    Switch <--> Laptop
-    AP <--> Camera
+    Router --> v99 --> Switch
+    Switch --> v80a --> AP
+    AP --> v80b --> Camera
 
     %% Camera outbound flows
     Camera -->|"TLS / QUIC sessions"| Switch
-    Switch --> Router
-    Router --> Internet
-    Internet --> Cloud
+    Router --> Internet --> Cloud
 
-    %% Mgmt / SPAN path
-    Laptop -.->|"Mgmt via HA <br/> SPAN monitoring"| Camera
+    %% SPAN / mgmt path (dashed)
+    Switch -.-> span1 -.-> Laptop
+    Laptop -.->|"Mgmt via HA\nSPAN monitoring"| Camera
+
+    %% Styling for small inline boxes
+    classDef tag fill:#3a3a3a,stroke:#bfbfbf,color:#ffffff,stroke-width:1px,font-size:10px;
+
 
 ```
 
