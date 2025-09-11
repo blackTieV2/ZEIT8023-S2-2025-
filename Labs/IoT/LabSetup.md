@@ -31,11 +31,13 @@ flowchart TD
     %% SPAN mirroring (one-way from switch to laptop)
     Switch -.-> span1 -.-> Laptop
 
-    %% Mgmt path (dashed, bidirectional)
-    Laptop -.->|"Mgmt via HA <br/> SPAN monitoring"|-.-> Camera
+    %% Mgmt path (dashed, bidirectional — use two edges)
+    Laptop -.->|"Mgmt via HA <br/> SPAN monitoring"| Camera
+    Camera -.-> Laptop
 
     %% Tiny tag-box styling (GitHub-safe)
     classDef tag fill:#444,stroke:#bbb,color:#fff,stroke-width:1px,font-size:10px;
+
 
 
 
