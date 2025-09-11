@@ -26,7 +26,7 @@ flowchart TD
     Switch <--> Laptop
 
     %% End-to-end traffic indication (sessions are with cloud; NAT at router)
-    Router -->|"TLS / QUIC sessions (NATed)"| Internet --> Cloud
+    Router -->|"TLS / QUIC sessions (NATed)"| Internet <--> Cloud
 
     %% SPAN mirroring (one-way from switch to laptop)
     Switch -.-> span1 -.-> Laptop
