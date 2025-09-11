@@ -4,7 +4,7 @@
 ```mermaid
 flowchart TD
     Internet((Internet / ISP))
-    Cloud[Tuya Cloud\n AWS / Cloudflare / Google]
+    Cloud[Tuya Cloud <br/> AWS / Cloudflare / Google]
     Router["Firewalla Gold Pro (Router)\n 192.168.99.254\nNAT outbound"]
     Switch["Cisco Catalyst C3850\nSVI VLAN99: 192.168.99.1\nSVI VLAN80: 192.168.80.1 (Gateway)"]
     AP["ASUS RT-AC3100\nAP Mode → VLAN80 Bridge"]
